@@ -4,6 +4,9 @@
     max-width: 100%;
     max-height: 100%
 }
+html{
+    scroll-behavior: smooth;
+}
 .hero{
     background-color: rgba(242, 249, 242, 0.738);
 }
@@ -81,12 +84,13 @@ span{
 
 
 .abt{
-    width: 90%;
+    width: 95%;
     display: flex;
+    margin: auto;
     align-items: center;
     justify-content: space-between;
     background-color: rgba(242, 249, 242, 0.738);
-   
+   padding-right: 2em;
 }
 .txt{
     margin-left: 5px;
@@ -106,8 +110,8 @@ span{
     height: 350px;
     max-width: 100%;
     width: 400px;
+   
 }
-
 
 
 
@@ -174,9 +178,20 @@ h5{
    padding: 5px;
     margin-right: 6px;
 }
-
+#form{
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    padding: 5em;
+}
+.frmbg{
+   padding-top: 2.5em;
+   padding-bottom: 3em;
+    background: rgb(214, 214, 235);
+    box-shadow: 5px 5px 9px rgb(174, 172, 172);
+}
 .form{
-    background-color: rgba(242, 249, 242, 0.738);
+    background-color: rgba(244, 242, 249, 0.738);
 }
 
 
@@ -193,9 +208,9 @@ h5{
         padding: 20px;
         min-width: 350px;
         max-width: 100%;
-        border: none;
-        outline: none;
+      
         max-width: 100%;
+       
     }
 
 .form table{
@@ -207,25 +222,25 @@ max-width: 100%;
 }
 
 .form tr td input{
-    background-color: rgb(220, 220, 235);
-border: none;
-border-radius: 10px;
+    border: 2px solid blue;
+    border-radius: 10px;
+    background-color: white;
 }
 ::placeholder{
 color: black;
 }
 .form tr td select{
-    background-color: rgb(220, 220, 235);
-border: none;
+    background-color: white;
+    border: 2px solid blue;
 border-radius: 10px;
 }
 
+
 .form button{
+    margin-top: 2em;
     align-items: center;
-    position:absolute;
-    left: 42%;
-    padding: 15px;
-    
+    justify-content: center;
+    padding: 0.5em;
     background: blue;
     border-radius: 10px;
     border: none;
@@ -245,12 +260,16 @@ border-radius: 10px;
 color: #fff;
 }
 
+
 .qrcode{
+      
+   
+    height: 200px;
+    width: 200px;
+    margin: auto;
    text-align: center;
    align-items: center;
    justify-content: center;
-   margin-top: 65px;
-   padding-top: 25px;
 }
 
 

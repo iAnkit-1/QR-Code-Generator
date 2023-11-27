@@ -13,9 +13,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
 
-
+<script>
+  
+  function resetScrollPosition() {
+      window.scrollTo(0, 0);
+  }
+</script>
 </head>
-<body>
+<body onload="resetScrollPosition()">
 
   <div id="preloader"></div>
 
@@ -45,7 +50,7 @@
         <p>Generate custom QR codes for your personal or bussiness needs</p>
 
         <div class="subscribe">
-            <button>Learn More</button>
+            <button >Learn More</button>
             <button>Get Started</button>
         </div>
     </div>
@@ -68,7 +73,7 @@
        
     </div>
     
-     <img src="https://algorand-developer-portal.tryprism.com/static/Posts/2021/05/12%2018:31/051221-QR_Code_generation.jpg?w=2220&cmd=resize_then_crop&height=1018&quality=70" alt="" >
+     <img src="QR-Cube.gif" alt="" >
 
    </div>
 
@@ -108,11 +113,12 @@
 </div>
 
 
+<h1 >Student QR Code Generator</h1>
 
 <div class="form" id="form">
-    <h1 >Student QR Code Generator</h1>
-      <form action target="_self">
-       
+   
+      <form class="frmbg" action target="_self">
+       <h1>Fill Your Data</h1>
 <table>
 <tr>
  <td><input type="text" placeholder="Enter the Student Name" id="name" required ></td>
@@ -153,12 +159,20 @@
 
 </table>
       </form>
-      <button onclick="generateqr()">Generate QR Code<span id="qr" class="material-symbols-outlined">
-        qr_code_scanner
-        </span></button>
+      <div>
+        <h1>Get Your QR Code Here</h1>
+        <div id="qrcode" class="qrcode"><img src="newgit.gif" alt=""></div>
+        <button onclick="generateqr()">Generate QR Code<span id="qr" class="material-symbols-outlined">
+          qr_code_scanner
+          </span></button>
+          <button id="download">Download <span id="qr" class="material-symbols-outlined">
+            download
+            </span></button>
+      </div>
   </div>
-
-  <div id="qrcode" class="qrcode">
+ 
+  <!-- <div id="qrcode" class="qrcode"> -->
+    
 
   </div>
 
@@ -183,9 +197,10 @@
 
 
   <script>
+    
     function generateqr()
     {
-      var name= document.getElementById('name').value;
+      const name= document.getElementById('name').value;
       var batch= document.getElementById('batch').value;
       var rollno= document.getElementById('rollno').value;
       var branch= document.getElementById('branch').value;
@@ -196,18 +211,35 @@
       if(name=="" || batch==null || rollno=="" || branch=="none"|| roomno=="" || hostel==null)
       {
         alert('Please enter your details')
+        return ;
       }
 
     console.log('Name: '+name+" \n"+"Batch: "+batch+"\n"+"Roll No:"+rollno+"\n"+"Branch: "+branch+"\n"+"Room No: "+roomno+"\n"+"Hostel: "+hostel);
 
-    var url= "https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=Name: "+ name + "\n Batch: "+ batch+ "\n Roll No: "+ rollno+ "\n Branch: "+branch+ "\n Room No: "+ roomno +"\n Hostel: "+ hostel;
+    const url= "https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=Name: "+ name + " Batch: "+ batch+ " Roll No: "+ rollno+ " Branch: "+branch+ " Room No: "+ roomno +" Hostel: "+ hostel;
     var ifr=`<iframe src="${url}" height="200" width="200"></iframe>`;
 
 
     document.getElementById('qrcode').innerHTML=ifr;
     }
+
+    const downBtn = document.getElementById('download');
+    downBtn.addEventListener("click", async () => {
+    const qrImg = document.querySelector('#qrcode iframe');
+    const response = await fetch(qrImg.src);
+    const blob = await response.blob();
+    const downLink = document.createElement("a");
+    downLink.href = URL.createObjectURL(blob);
+    downLink.download = "qrcode.jpg";
+    downLink.click();
+});
+      
+    
     
   </script>
+
+
+
 
 
 
